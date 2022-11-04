@@ -2,9 +2,11 @@
 
 MTT can be cloned from [https://github.com/open-mpi/mtt.](https://github.com/open-mpi/mtt)
 
-The path to your MTT directory needs to be added to the the environment. Add   
-export MTT_HOME=/path/to/mtt  
- to your .bashrc or .bash_profile and activate the file using 'source .bashrc' or 'source .bash_profile' at the command line. 
+The path to your MTT directory needs to be added to the environment. Add
+{% highlight bash %}
+export MTT_HOME=/path/to/mtt
+{% endhighlight %}
+to your .bashrc or .bash_profile and activate the file using 'source .bashrc' or 'source .bash_profile' at the command line.
 
 When you are finished with this guide head on over to the [Plugins](./plugins_docs.md) and [INI](./ini_docs.md) guides to get familiar with them.
 
@@ -17,7 +19,7 @@ ImportError: No module named SOMETHING
 
 Where SOMETHING represents some missing python package. This indicates that you need to set up a Python virtual environment to run MTT in.
 
-Python virtual environments create an isolated environment for python based applications. Using a virtual environment for MTT means you can install all necessary dependencies without worrying about affecting other applications. This document covers two ways to set up python virtual environments. The Conda package and environment manager is the easiest to use. It is included with all versions of Anaconda and Miniconda. If you do not have access to Conda then you will need to install the virtualenv and virtualenvwrapper packages.
+Python virtual environments create an isolated environment for python based applications. Using a virtual environment for MTT means you can install all necessary dependencies without worrying about affecting other applications. This document covers two ways to set up python virtual environments: Conda and Virtualenvwrapper. The Conda package and environment manager is the easiest to use. It is included with all versions of Anaconda and Miniconda. If you do not have access to Conda then you will need to install the virtualenv and virtualenvwrapper packages.
 
 The virtual environment only has to be set up once and then it can be called anytime the user needs it. If installing on a system with front ends and compute nodes the virtual environment should be set up on the front end only.
 
