@@ -45,12 +45,12 @@ MTTDefaults phase - Some general settings for the run.
 </font></pre>
 ##### Example usage
 
-[MTTDefaults]  
-trial = True  
-scratchdir = /Users/tmp/mttscratch  
-description = OpenMPI master  
-executor = sequential  
-platform = Your_Platform  
+[MTTDefaults]
+trial = True
+scratchdir = /Users/tmp/mttscratch
+description = OpenMPI main
+executor = sequential
+platform = Your_Platform
 
 
 ### INI Section BIOS
@@ -94,18 +94,18 @@ plugin: Has no Default and other options depend on which plugin is used
        password:         Default = None, Password required for that user to access the
                                    repository
        pwfile:           Default = None, File where password can be found
-       branch:           Default = None, Branch (if not master) to be downloaded
+       branch:           Default = None, Branch (if not main) to be downloaded
        pr:               Default = None, Pull request to be downloaded
        subdir:           Default = None, "Subdirectory of interest in repository
 </font></pre>
 
 ##### Example usage
 
-[ASIS MiddlewareGet:OMPIMaster]  
+[ASIS MiddlewareGet:OMPIMain]
 plugin = OMPI_Snapshot  
-url =  https://download.open-mpi.org/nightly/open-mpi/master  
 version_file = /Path/to/your/version_file  
-mpi_name = ompi-nightly-master  
+url =  https://download.open-mpi.org/nightly/open-mpi/main
+mpi_name = ompi-nightly-main
 
 
 [SKIP MiddlewareGet:OMPI]  
@@ -154,11 +154,11 @@ plugin: Has no Default and other options depend on which plugin is used
 
 ##### Example usage
 
-[MiddlewareBuild:OMPIMaster]  
-parent = MiddlewareGet:OMPIMaster  
-plugin = Autotools  
-configure_options = --enable-debug  
-make_options = -j 1  
+[MiddlewareBuild:OMPIMain]
+parent = MiddlewareGet:OMPIMain
+plugin = Autotools
+configure_options = --enable-debug
+make_options = -j 1
 
 
 ### INI Section TestGet
@@ -183,18 +183,18 @@ plugin: Has no Default and other options depend on which plugin is used
 </font></pre>
 
 ##### Example usage
-[ASIS TestGet:IBM]  
-parent = MiddlewareBuild:OMPIMaster  
-plugin = Git  
-url =  git@github.com:open-mpi/ompi-tests  
-subdir = ibm  
+[ASIS TestGet:IBM]
+parent = MiddlewareBuild:OMPIMain
+plugin = Git
+url =  git@github.com:open-mpi/ompi-tests
+subdir = ibm
 
 
 [SKIP TestGet:Intel]  
-parent = MiddlewareBuild:OMPIMaster  
 plugin = Git  
 url =  git@github.com:open-mpi/ompi-tests  
 subdir = intel_tests  
+parent = MiddlewareBuild:OMPIMain
 
 ### INI Section TestBuild
 Test build phases - build the tests
@@ -223,14 +223,14 @@ DefaultTestBuild / very similar to Autotools
      modules_unload:     Default = None, "Modules to unload
 </font></pre>
 ##### Example usage
-[ASIS TestBuild:IBMInstalled]  
-parent = TestGet:IBM  
-middleware = MiddlewareBuild:OMPIMaster  
-autogen_cmd = ./autogen.sh  
-configure_options = CC=mpicc CXX=mpic++ F77=mpif77 FC=mpifort  
-make_options = -j 1  
-merge_stdout_stderr = 1  
-stderr_save_lines = 100  
+[ASIS TestBuild:IBMInstalled]
+parent = TestGet:IBM
+middleware = MiddlewareBuild:OMPIMain
+autogen_cmd = ./autogen.sh
+configure_options = CC=mpicc CXX=mpic++ F77=mpif77 FC=mpifort
+make_options = -j 1
+merge_stdout_stderr = 1
+stderr_save_lines = 100
 
 ### INI Section LauncherDefaults
 Define some default launcher execution parameters -

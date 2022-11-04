@@ -25,7 +25,7 @@ from distutils.spawn import find_executable
 # @param username    Username required for accessing the repository
 # @param password    Password required for that user to access the repository
 # @param pwfile      File where password can be found
-# @param branch      Branch (if not master) to be downloaded; mutually exclusive with `commit` and `pr`
+# @param branch      Branch (if not main) to be downloaded; mutually exclusive with `commit` and `pr`
 # @param commit      Commit (hash prefix, tag or other commit expression) to be downloaded; mutually exclusive with `branch` and `p`
 # @param pr          Pull request to be downloaded; mutually exclusive with `branch` and `commit`
 # @param subdir      Subdirectory of interest in repository
@@ -48,7 +48,7 @@ class Git(FetchMTTTool):
         self.options['username'] = (None, "Username required for accessing the repository")
         self.options['password'] = (None, "Password required for that user to access the repository")
         self.options['pwfile'] = (None, "File where password can be found")
-        self.options['branch'] = (None, "Branch (if not master) to be downloaded; mutually exclusive with `commit` and `pr`")
+        self.options['branch'] = (None, "Branch (if not main) to be downloaded; mutually exclusive with `commit` and `pr`")
         self.options['commit'] = (None, "Commit (hash prefix, tag or other commit expression) to be downloaded; mutually exclusive with `branch` and `pr`")
         self.options['pr'] = (None, "Pull request to be downloaded; mutually exclusive with `branch` and `commit`")
         self.options['subdir'] = (None, "Subdirectory of interest in repository")
