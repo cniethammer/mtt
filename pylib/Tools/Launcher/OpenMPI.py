@@ -140,7 +140,7 @@ class OpenMPI(LauncherMTTTool):
         # assemble the command
         cmdargs = cmds['command'].split()
         if cmds['np'] is not None:
-            cmdargs.append("-np")
+            cmdargs.append("-n")
             cmdargs.append(cmds['np'])
         if cmds['ppn'] is not None:
             cmdargs.append("-N")
